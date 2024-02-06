@@ -18,3 +18,24 @@ spec:
         name: guestbook-ui
         ports:
         - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guestbook-ui-neg
+spec:
+  replicas: 5
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: guestbook-ui-neg
+  template:
+    metadata:
+      labels:
+        app: guestbook-ui-neg
+    spec:
+      containers:
+      - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+        name: guestbook-ui-neg
+        ports:
+        - containerPort: 80
