@@ -11,7 +11,7 @@ spec:
   #   secretName: cafe-secret
   ingressClassName: nginx
   rules:
-  - host: nginx.vannick.joonix.net
+  - host: ""
     http:
       paths:
       - path: /
