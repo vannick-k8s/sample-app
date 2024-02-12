@@ -27,7 +27,7 @@ kind: Ingress
 metadata:
   name: guestbook-ui-ingress-gke
   annotations:
-    cloud.google.com/neg: '{"ingress": false}'     # Create a a NEG for Container Native Load Balancing
+    cloud.google.com/neg: '{"ingress": false}'     # Do not create a a NEG for Container Native Load Balancing
 spec:
   rules:
   - http:
