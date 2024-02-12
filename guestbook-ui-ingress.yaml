@@ -25,7 +25,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: guestbook-ui-ingress-gke
+  name: guestbook-ui-ingress-gke-non-neg
   annotations:
     cloud.google.com/neg: '{"ingress": false}'     # Do not create a a NEG for Container Native Load Balancing
 spec:
@@ -46,6 +46,24 @@ metadata:
   name: guestbook-ui-ingress-gke-neg
   annotations:
     cloud.google.com/neg: '{"ingress": true}'     # Create a a NEG for Container Native Load Balancing
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: guestbook-ui
+            port:
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: guestbook-ui-ingress-gke-internal
+  annotations:
+    kubernetes.io/ingress.class: "gce-internal"
 spec:
   rules:
   - http:
