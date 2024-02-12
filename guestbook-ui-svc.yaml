@@ -56,6 +56,7 @@ metadata:
   annotations:
     networking.gke.io/load-balancer-type: "Internal"
     networking.gke.io/internal-load-balancer-subnet: "ilb-subnet"    # Force to create ILB in dedicated subnet
+    networking.gke.io/internal-load-balancer-allow-global-access: "true" # Global access true
 spec:
   type: LoadBalancer    # Internal ILB with IP in a dedicated subnet
   ports:
