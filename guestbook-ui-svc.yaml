@@ -48,3 +48,18 @@ spec:
     targetPort: 80
   selector:
     app: guestbook-ui-neg
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: guestbook-ui-internal
+  annotations:
+    cloud.google.com/load-balancer-type: "Internal
+    networking.gke.io/internal-load-balancer-subnet: "ilb-subnet"    # Force to create ILB in dedicated subnet
+spec:
+  type: LoadBalancer    # Internal ILB with IP in a dedicated subnet
+  ports:
+  - port: 8080
+    targetPort: 80
+  selector:
+    app: guestbook-ui
