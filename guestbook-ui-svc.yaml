@@ -52,9 +52,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: guestbook-ui-internal
+  name: guestbook-ui-internal-subnet
   annotations:
-    cloud.google.com/load-balancer-type: "Internal"
+    networking.gke.io/load-balancer-type: "Internal"
     networking.gke.io/internal-load-balancer-subnet: "ilb-subnet"    # Force to create ILB in dedicated subnet
 spec:
   type: LoadBalancer    # Internal ILB with IP in a dedicated subnet
